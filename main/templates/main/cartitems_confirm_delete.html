@@ -1,0 +1,16 @@
+{% extends "main/layout.html" %}
+{% block content %}
+    <div class="content-section container">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Xóa mặt hàng trong giỏ hàng</legend>
+                <h2>Bạn có chắc chắn muốn xóa sản phẩm "{{ object.item.title }}"</h2>
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-danger" type="submit">Đồng ý</button>
+                <a class="btn btn-success" href="{% url 'main:cart' %}">Đóng</a>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends "main/layout2.html" %}
+{% block content %}
+<div class="cart">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="text-center">Đơn đặt hàng đang hoạt động</h3>
+                {% if items %}
+                <div class="table-responsive">
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <td scope="col">Mã đơn hàng</td>
+                            <th scope="col">User</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Tên hàng</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Thông số kỹ thuật</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng hàng</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Thay đổi trạng thái</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>{{ item.user.username }}</td>
+                            <td>{{ item.user.email}}</td>
+                            <td>{{ item.item.title }} <span class="badge badge-{{ item.item.label_colour }}">{{ item.item.labels }}</span></td>
+                            <td>{{ item.item.description }}</td>
+                            <td>{{ item.item.instructions }}</td>
+                            <td>{{ item.item.price }}</td>
+                            <td>{{ item.item.pieces }} pieces</td>
+                            <td>{{ item.status }}</td>
+                            <td>
+                                <form method="POST" action="{% url 'main:update_status' item.id %}" style="display: flex;">
+                                    {% csrf_token %}
+                                    <select class="form-control" name="status">
+                                        <option value="Active" selected="selected">Đã đặt hàng</option>
+                                        <option value="Delivered">Đã giao hàng</option>
+                                    </select>
+                                    <button type="submit" class="btn btn-primary">Thay đổi</button>
+                                </form>
+                            </td>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <h4 class="text-center">Xin lỗi, bạn chưa có đơn đặt hàng nào!!!</h4>
+                {% endif %}
+            </div>
+        </div>
+</div>
+{% endblock content %}

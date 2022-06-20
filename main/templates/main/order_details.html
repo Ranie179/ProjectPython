@@ -1,0 +1,86 @@
+{% extends "main/layout.html" %}
+{% block content %}
+<div class="cart">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 mt-5">
+                <h3 class="text-center">Đơn hàng đang hoạt động</h3>
+                {% if items %}
+                <h4 class="text-center">Tổng số tiền thanh toán: {{total}} VNĐ cho {{ count }} đơn hàng.</h4>
+                <h6 class="text-center">Vui lòng thanh toán qua ATM hoặc thẻ tín dụng hoặc tiền mặt khi giao hàng!</h6>
+                <div class="table-responsive">
+                    <table class="table table-light">
+                        <thead>
+                        <tr>
+                            <th scope="col">Ngày đặt</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Thông số kỹ thuật</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Trạng thái</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for item_active in items %}
+                        <tr>
+                            <td>{{ item_active.ordered_date }}</td>
+                            <td>{{ item_active.item.title }} <span class="badge badge-{{ item_active.item.label_colour }}">{{ item_active.item.labels }}</span></td>
+                            <td>{{ item_active.item.description }}</td>
+                            <td>{{ item_active.item.instructions }}</td>
+                            <td>{{ item_active.item.price }} VNĐ</td>
+                            <td>{{ item_active.item.pieces }}</td>
+                            <td>{{ item_active.status }}</td>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <h4 class="text-center">Xin lỗi, Bạn vẫn chưa đặt bất kỳ sản phẩm nào!!!</h4>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 mt-5">
+                <h3 class="text-center">Đơn hàng trước đây</h3>
+                {% if cart_items %}
+                <div class="table-responsive">
+                    <table class="table table-light">
+                        <thead>
+                        <tr>
+                            <th scope="col">Ngày đặt</th>
+                            <th scope="col">Tên</th>
+                            <th scope="col">Mô tả</th>
+                            <th scope="col">Thông số kỹ thuật</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Số lượng</th>
+                            <th scope="col">Trạng thái</th>
+                            <th scope="col">Ngày giao hàng</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart in cart_items %}
+                        <tr>
+                            <td>{{ cart.ordered_date }}</td>
+                            <td>{{ cart.item.title }} <span class="badge badge-{{ cart.item.label_colour }}">{{ cart.item.labels }}</span></td>
+                            <td>{{ cart.item.description }}</td>
+                            <td>{{ cart.item.instructions }}</td>
+                            <td>{{ cart.item.price }} VNĐ</td>
+                            <td>{{ cart.item.pieces }}</td>
+                            <td>{{ cart.status }}</td>
+                            <td>{{ cart.delivery_date }}</td>
+                        </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% else %}
+                <h4 class="text-center">Xin lỗi, Bạn vẫn chưa đặt bất kỳ sản phẩm nào!!!</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
