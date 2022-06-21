@@ -94,7 +94,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Earnings</div>
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Tổng doanh thu</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">₹ {{ income }}</div>
                                         </div>
                                         <div class="col-auto">
@@ -110,7 +110,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Delivered</div>
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Đơn đã giao</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ completed_total }}
                                             </div>
                                         </div>
@@ -127,7 +127,7 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Pending Orders</div>
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Đơn đang đợi được giao</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{ pending_total }}
                                             </div>
                                         </div>
@@ -135,33 +135,6 @@
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="card shadow mb-4">
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Categories Bar Chart</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-pie pt-4 pb-2">
-                                        <canvas id="myChart"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-lg-6">
-                            <div class="card shadow mb-4">
-                                <div
-                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Categories Doughnut Chart</h6>
-                                </div>
-                                <div class="card-body">
-                                    <canvas id="myAreaChart"></canvas>
                                 </div>
                             </div>
                         </div>
@@ -175,73 +148,6 @@
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
                         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                         crossorigin="anonymous"></script>
-                    <script>
-                        let myChart = document.getElementById('myChart').getContext('2d');
-                        let myAreaChart = document.getElementById('myAreaChart').getContext('2d');
-
-                        let orderChart1 = new Chart(myChart, {
-                            type: 'bar',
-                            data: {
-                                labels: ['Spicy Avocado', 'Tempura', 'Maki'],
-                                datasets: [{
-                                    label: 'Items',
-                                    data: [
-                                        count1,
-                                        count2,
-                                        count3,
-                                    ],
-                                    backgroundColor: [
-                                        '#007BFF',
-                                        '#28A745',
-                                        '#FFC107',
-                                    ],
-                                }]
-                            },
-                            options: {
-                                layout: {
-                                    padding: {
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 40,
-                                        top: 0
-                                    }
-                                },
-                            }
-                        });
-                        let orderChart2 = new Chart(myAreaChart, {
-                            type: 'doughnut',
-                            data: {
-                                labels: ['Spicy Avocado', 'Tempura', 'Maki'],
-                                datasets: [{
-                                    label: 'Items',
-                                    data: [
-                                        count1,
-                                        count2,
-                                        count3,
-                                    ],
-                                    backgroundColor: [
-                                        '#007BFF',
-                                        '#28A745',
-                                        '#FFC107',
-                                    ],
-                                    borderWidth: 1,
-                                    borderColor: '#777',
-                                    hoverBorderWidth: 1,
-                                    hoverBorderColor: '#000'
-                                }]
-                            },
-                            options: {
-                                layout: {
-                                    padding: {
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 40,
-                                        top: 0
-                                    }
-                                },
-                            }
-                        });
-                    </script>
 </body>
 
 </html>

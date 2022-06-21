@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 class NewUSerForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    phone_number = forms.CharField(required=True)
-    first_name = forms.CharField(required=True)
-    last_name = forms.CharField(required=True)
+    phone_number = forms.CharField(label = "Số điện thoại",required=True)
+    first_name = forms.CharField(label = "Họ", required=True)
+    last_name = forms.CharField(label = "Tên", required=True)
 
     class Meta:
         model = User

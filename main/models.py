@@ -20,16 +20,16 @@ class Item(models.Model):
         ('info', 'info'),
         ('warning', 'warning'),
     )
-    title = models.CharField(max_length=150)
-    description = models.CharField(max_length=250,blank=True)
-    price = models.FloatField()
-    pieces = models.IntegerField(default=6)
-    instructions = models.CharField(max_length=250,default="Available")
-    image = models.ImageField(default='default.png', upload_to='images/')
+    title = models.CharField(verbose_name = "Tên", max_length=150)
+    description = models.CharField(verbose_name = "Mô tả", max_length=250,blank=True)
+    price = models.FloatField(verbose_name = "Giá")
+    pieces = models.IntegerField(verbose_name = "Số lượng",default=6)
+    instructions = models.CharField(verbose_name = "Thông số kĩ thuật", max_length=250,default="Available")
+    image = models.ImageField(verbose_name = "Ảnh",default='default.png', upload_to='images/')
     labels = models.CharField(max_length=25, choices=LABELS, blank=True)
     label_colour = models.CharField(max_length=15, choices=LABEL_COLOUR, blank=True)
-    slug = models.SlugField(default="foods")
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+    slug = models.SlugField(verbose_name = "ID", default="Product")
+    created_by = models.ForeignKey(User, verbose_name = "Được tạo bởi", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
